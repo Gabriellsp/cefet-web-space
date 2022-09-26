@@ -54,3 +54,31 @@ const imagens = [
     }
   ];
 
+
+
+var indexAtual = 0;
+const imagemAtual = document.querySelector('#slide');
+const proximaImagemButton = document.querySelector('#proximo');
+const voltarImagemButton = document.querySelector('#anterior');
+
+function nextImage() {
+  indexAtual++;
+  if(indexAtual>=imagens.length) indexAtual=0;
+  imagemAtual.src = servidorDasImagens+'/'+imagens[indexAtual].arquivo;
+  imagemAtual.alt = imagens[indexAtual].descricao
+}
+
+function backImage() {
+  console.log(indexAtual)
+  indexAtual--;
+  if(indexAtual<0) indexAtual=imagens.length-1;  
+  imagemAtual.src = servidorDasImagens+'/'+imagens[indexAtual].arquivo;
+  imagemAtual.alt = imagens[indexAtual].descricao
+}
+
+proximaImagemButton.addEventListener('click', nextImage);
+voltarImagemButton.addEventListener('click', backImage);
+
+
+
+
